@@ -2,7 +2,7 @@ const express = require("express");
 const problemRouter = express.Router();
 const adminMiddleware = require("../middleware/adminMiddleware");
 const userMiddleware = require("../middleware/userMiddleware");
-const { createProblem, updateProblem, deleteProblem , fetchProblem} = require("../controllers/userProblem");
+const { createProblem, updateProblem, deleteProblem , fetchProblem, fetchAllProblem} = require("../controllers/userProblem");
 
 
 

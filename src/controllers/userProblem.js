@@ -103,4 +103,15 @@ const fetchProblem = async (req, res) => {
   }
 
 }
-module.exports = { createProblem, updateProblem, deleteProblem, fetchProblem};
+
+const fetchAllProblem = async (req, res) => {
+
+  try{
+    const problems = await Problem.find({});
+    res.status(200).send(problems);
+
+  } catch(err){
+ res.status(400).send("Error:" + err.message);
+  }
+}
+module.exports = { createProblem, updateProblem, deleteProblem, fetchProblem, fetchAllProblem};
