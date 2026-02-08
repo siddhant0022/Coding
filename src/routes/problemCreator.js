@@ -12,7 +12,7 @@ const { createProblem, updateProblem } = require("../controllers/userProblem");
 //delete
 
 problemRouter.post("/create", adminMiddleware, createProblem);
-problemRouter.patch("/update/:problemId", adminMiddleware, updateProblem);
+problemRouter.put("/update/:problemId", adminMiddleware, updateProblem);
 problemRouter.delete("/delete/:problemId", adminMiddleware, deleteProblem);
 
 problemRouter.get("/fetch/:problemId",userMiddleware, fetchProblem);
