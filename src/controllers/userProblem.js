@@ -65,4 +65,42 @@ const updateProblem = async (req, res) => {
    res.status(400).send("Error:" + err.message);
   }
 }
-module.exports = { createProblem, updateProblem};
+
+const deleteProblem = async (req, res) => {
+  const {id} = req.params;
+  try{
+   if(!id){
+    return res.status(400).send("Problem ID is required");
+   }
+   const DsaProblem = await Problem.findByid(id);
+   if(!DsaProblem) {
+    return res.status(404).send("Problem not found");
+   }
+      const deletedProblem = await Problem.findByIdAndDelete(id);
+      res.status(200).send(deletedProblem);
+
+  }catch(err){
+   res.status(400).send("Error:" + err.message);
+  }
+
+}
+
+const fetchProblem = async (req, res) => {
+  const {id} = req.params;
+  if(!id){
+    return res.status(404).send ("Problem ID is missing");
+  }
+
+  try{
+   const DsaProblem = await Problem.findByid(id);
+   if(!DsaProblem){
+    return res.status(404).send("Problem not found");
+   }
+   res.status(200).send(DsaProblem);
+  }
+  catch(err){
+   res.status(400).send("Error:" + err.message);
+  }
+
+}
+module.exports = { createProblem, updateProblem, deleteProblem, fetchProblem};
